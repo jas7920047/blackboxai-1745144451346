@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tabbed Desktop App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    .tab {
+      overflow: hidden;
+      background-color: #333;
+      display: flex;
+    }
+    .tab button {
+      background-color: inherit;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      transition: 0.3s;
+      color: white;
+      flex-grow: 1;
+      font-size: 17px;
+    }
+    .tab button:hover {
+      background-color: #575757;
+    }
+    .tab button.active {
+      background-color: #2196F3;
+    }
+    .tabcontent {
+      display: none;
+      padding: 20px;
+      height: calc(100vh - 48px);
+      overflow-y: auto;
+    }
+    .tabcontent.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="tab">
+    <button class="tablinks active" onclick="openTab(event, 'Blogs')">Blogs</button>
+    <button class="tablinks" onclick="openTab(event, 'Forums')">Forums</button>
+    <button class="tablinks" onclick="openTab(event, 'GroceryItems')">Grocery Items</button>
+  </div>
+
+  <div id="Blogs" class="tabcontent active">
+    <h2>Blogs</h2>
+    <p>Welcome to the Blogs tab.</p>
+  </div>
+
+  <div id="Forums" class="tabcontent">
+    <h2>Forums</h2>
+    <p>Welcome to the Forums tab.</p>
+  </div>
+
+  <div id="GroceryItems" class="tabcontent">
+    <h2>Grocery Items</h2>
+    <p>Welcome to the Grocery Items tab.</p>
+  </div>
+
+  <script>
+    function openTab(evt, tabName) {
+      const tabcontents = document.getElementsByClassName("tabcontent");
+      for (let i = 0; i < tabcontents.length; i++) {
+        tabcontents[i].classList.remove("active");
+      }
+      const tablinks = document.getElementsByClassName("tablinks");
+      for (let i = 0; i < tablinks.length; i++) {
+        tablinks[i].classList.remove("active");
+      }
+      document.getElementById(tabName).classList.add("active");
+      evt.currentTarget.classList.add("active");
+    }
+  </script>
+</body>
+</html>
